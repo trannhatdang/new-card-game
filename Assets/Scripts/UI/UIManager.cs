@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class UIManager : MonoBehaviour
 {
+	[SerializeField] List<UIHand> m_handList;
 	void Start()
 	{
 

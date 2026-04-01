@@ -30,15 +30,15 @@ public class UIHand : MonoBehaviour
 			var width = m_tfsList[i].sizeDelta[0];
 			var height = m_tfsList[i].sizeDelta[1];
 
-			m_tfsList[i].anchoredPosition = new Vector2(width * i, m_tfsList[i].anchoredPosition.y);
+			m_tfsList[i].DOAnchoredPos(new Vector2(width * i, m_tfsList[i].anchoredPosition.y), 0.5f, false);
 		}
 
 	}
 
 	public void Highlight(int index)
 	{
-		m_tfsList[index].sizeDelta = new Vector2(m_highlightWidth, m_tfsList[index].sizeDelta.y);
-		m_tfsList[index].anchoredPosition = new Vector2(m_tfsList[index].anchoredPosition.x, m_tfsList[index].anchoredPosition.y);
+		m_tfsList[index].DOSizeDelta(new Vector2(m_highlightWidth, m_tfsList[index].sizeDelta.y), 0.5f, false);
+		m_tfsList[index].DOAnchorPos(new Vector2(m_tfsList[index].anchoredPosition.x, m_tfsList[index].anchoredPosition.y), 0.5f, false);
 		position();
 	}
 
@@ -46,7 +46,7 @@ public class UIHand : MonoBehaviour
 	{
 		for(int i = 0; i < m_tfsList.Count; ++i)
 		{
-			m_tfsList[i].sizeDelta = new Vector2(m_defaultWidth, m_tfsList[i].sizeDelta.y);
+			m_tfsList[i].DOSizeDelta(new Vector2(m_defaultWidth, m_tfsList[i].sizeDelta.y), 0.5f, false);
 		}
 		position();
 	}
@@ -61,7 +61,6 @@ public class UIHand : MonoBehaviour
 			if(all_tfs[i].parent != transform) continue;
 
 			m_tfsList.Add(all_tfs[i]);
-			all_tfs[i].sizeDelta = new Vector2(m_defaultWidth, all_tfs[i].sizeDelta[1]);
 		}
 	}
 }
