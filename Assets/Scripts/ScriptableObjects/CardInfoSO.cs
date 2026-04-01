@@ -8,9 +8,10 @@ public class CardInfoSO : ScriptableObject
 	[SerializeField] string m_name;
 	[SerializeField] string m_descript;
 	[SerializeField] Sprite m_sprite;
+	[SerializeField] CardAction m_action;
 	
 	public void CardAction(Player player, GameManager gm)
 	{
-
+		m_action.Action(player, gm);
 	}
 }

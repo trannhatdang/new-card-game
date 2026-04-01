@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using DG.Tweening;
 
 public class UIHand : MonoBehaviour
 {
@@ -30,7 +31,7 @@ public class UIHand : MonoBehaviour
 			var width = m_tfsList[i].sizeDelta[0];
 			var height = m_tfsList[i].sizeDelta[1];
 
-			m_tfsList[i].DOAnchoredPos(new Vector2(width * i, m_tfsList[i].anchoredPosition.y), 0.5f, false);
+			m_tfsList[i].DOAnchorPos(new Vector2(width * i, m_tfsList[i].anchoredPosition.y), 0.5f, false);
 		}
 
 	}
