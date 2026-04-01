@@ -1,16 +1,24 @@
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
+using Cysharp.Threading.Tasks;
 
 public class GameManager : MonoBehaviour
 {
 	// Start is called once before the first execution of Update after the MonoBehaviour is created
-	[SerializeField] UIManager m_ui;
+	[SerializeField] GameState m_state;
+	[SerializeField] UIManager m_UI;
 	[SerializeField] DeckInfoSO m_deckInfoSO;
 
-	bool m_pickingPlayer = false;
-	bool m_pickingCard = false;
+	[SerializeField] List<Player> m_playerList;
+	[SerializeField] int m_currPlayer;
+
+	Player m_playerPicked;
+	Card m_cardPicked;
+
 	void Start()
 	{
-
+		m_currPlayer = 0;
 	}
 
 	// Update is called once per frame
@@ -19,25 +27,46 @@ public class GameManager : MonoBehaviour
 
 	}
 
-	public void StartPlayerPicker()
+	public void NextTurn()
 	{
-		m_pickingPlayer = true;
+		m_playerList[m_currPlayer++].EndTurn();
+		m_playerList[m_currPlayer].BeginTurn();
 	}
 
-	public void StartCardPicker()
+	public async UniTask<Player> StartPlayerPicker()
 	{
-		m_pickingCard = true;
+		m_state = GameState.Picking;
+		await UniTask.WaitUntilValueChanged(this, x => x.m_playerPicked);
+
+		m_state = GameState.Playing;
+		return m_playerPicked;
+	}
+
+	public async UniTask<Card> StartCardPicker()
+	{
+		m_state = GameState.Picking;
+		await UniTask.WaitUntilValueChanged(this, x => x.m_cardPicked);
+
+		m_state = GameState.Playing;
+		return m_cardPicked;
 	}
 
 	public void PickPlayer(Player player)
 	{
-
-		m_pickingPlayer = false;
+		m_playerPicked = player;
 	}
 
 	public void PickCard(Card card)
 	{
-
-		m_pickingCard = false;
+		m_cardPicked = card;
 	}
+
+	// void OnGUI()
+	// {
+	// 	if (GUI.Button(new Rect(500, 500, 50, 100), "Start Player Picker"))
+	// 	{
+	// 		print("You clicked the button!");
+	// 		_ = StartPlayerPicker(); //to ignore warning
+	// 	}
+	// }
 }

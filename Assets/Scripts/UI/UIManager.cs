@@ -1,30 +1,20 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using Cysharp.Threading.Tasks;
 
 public class UIManager : MonoBehaviour
 {
-	[SerializeField] GameManager m_gm;
+	[SerializeField] GameManager m_GM;
 	[SerializeField] List<UIHand> m_handList;
-
-	public void StartPlayerPicker()
-	{
-		m_gm.StartPlayerPicker();
-	}
-
-	public void StartCardPicker()
-	{
-		m_gm.StartCardPicker();
-	}
 
 	public void PickPlayer(Player player)
 	{
-		m_gm.PickPlayer(player);
+		m_GM.PickPlayer(player);
 	}
 
 	public void PickCard(Card card)
 	{
-		m_gm.PickCard(card);
+		m_GM.PickCard(card);
 	}
-
 }

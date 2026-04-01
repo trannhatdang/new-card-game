@@ -1,7 +1,7 @@
 public class Cyclone : CardAction
 {
-	public override void Card(Player player, GameManager gm)
+	public override async void Action(Player player, GameManager gm, UIManager ui)
 	{
-		gm.StartCardPicker()
+
 	}
 }

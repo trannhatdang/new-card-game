@@ -5,6 +5,7 @@ public class Card : MonoBehaviour
 	// Start is called once before the first execution of Update after the MonoBehaviour is created
 	[SerializeField] Player m_player;
 	[SerializeField] GameManager m_gm;
+	[SerializeField] UIManager m_ui;
 	[SerializeField] CardInfoSO m_cardInfoSO;
 
 	public CardInfoSO CardInfo {
@@ -22,13 +23,19 @@ public class Card : MonoBehaviour
 
 	}
 
-	public void SetGameManager(GameManager gm)
+	public void InjectManagers(GameManager gm, UIManager ui)
 	{
 		m_gm = gm;
+		m_ui = ui;
 	}
 
 	public void OnPlayed()
 	{
-		m_cardInfoSO.CardAction(m_player, m_gm);
+		if(!m_gm || !m_ui)
+		{
+			return;
+		}
+
+		m_cardInfoSO.CardAction(m_player, m_gm, m_ui);
 	}
 }

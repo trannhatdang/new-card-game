@@ -33,14 +33,27 @@ public class UIHand : MonoBehaviour
 
 			m_tfsList[i].DOAnchorPos(new Vector2(width * i, m_tfsList[i].anchoredPosition.y), 0.5f, false);
 		}
+	}
 
+	public void ChangeOrder(int before, int after)
+	{
+		Vector2 beforeDelta = m_tfsList[before].sizeDelta;
+		Vector2 afterDelta = m_tfsList[after].sizeDelta;
+
+		Vector2 beforePos = m_tfsList[before].anchoredPosition;
+		Vector2 afterPos = m_tfsList[after].anchoredPosition;
+
+		m_tfsList[before].sizeDelta = afterDelta;
+		m_tfsList[before].anchoredPosition = afterPos;
+
+		m_tfsList[after].sizeDelta = beforeDelta;
+		m_tfsList[after].anchoredPosition = beforeDelta;
 	}
 
 	public void Highlight(int index)
 	{
 		m_tfsList[index].DOSizeDelta(new Vector2(m_highlightWidth, m_tfsList[index].sizeDelta.y), 0.5f, false);
 		m_tfsList[index].DOAnchorPos(new Vector2(m_tfsList[index].anchoredPosition.x, m_tfsList[index].anchoredPosition.y), 0.5f, false);
-		position();
 	}
 
 	public void Reset()
@@ -48,8 +61,8 @@ public class UIHand : MonoBehaviour
 		for(int i = 0; i < m_tfsList.Count; ++i)
 		{
 			m_tfsList[i].DOSizeDelta(new Vector2(m_defaultWidth, m_tfsList[i].sizeDelta.y), 0.5f, false);
+			m_tfsList[i].DOAnchorPos(new Vector2(m_defaultWidth * i, 0), 0.5f, false);
 		}
-		position();
 	}
 
 	public void UpdateChildrenTFS()

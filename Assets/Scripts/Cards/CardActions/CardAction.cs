@@ -1,4 +1,4 @@
 public abstract class CardAction
 {
-	public abstract void Action(Player player, GameManager gm);
+	public abstract void Action(Player player, GameManager gm, UIManager ui);
 }
