@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
 	[SerializeField] DeckInfoSO m_deckInfoSO;
 
 	[SerializeField] List<Player> m_playerList;
+	[SerializeField] List<PlayerRole> m_playerRoles;
 	[SerializeField] int m_currPlayer;
 
 	Player m_playerPicked;
@@ -18,6 +19,7 @@ public class GameManager : MonoBehaviour
 
 	void Start()
 	{
+		//initialize game
 		m_currPlayer = 0;
 	}
 
@@ -59,6 +61,18 @@ public class GameManager : MonoBehaviour
 	public void PickCard(Card card)
 	{
 		m_cardPicked = card;
+	}
+
+	public Field GetField()
+	{
+		List<int> playerCardsNum = new List<int>();
+
+		for(int i = 0; i < m_playerList.Count; ++i)
+		{
+			playerCardsNum.Add(m_playerList[i].GetNumCardsLeft());
+		}
+
+		return new Field(m_playerList.Count, m_playerRoles, playerCardsNum);
 	}
 
 	// void OnGUI()

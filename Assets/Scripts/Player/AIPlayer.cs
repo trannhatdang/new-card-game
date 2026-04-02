@@ -2,18 +2,25 @@ using UnityEngine;
 
 public abstract class AIPlayer : Player
 {
-	protected abstract Card processNextMove();
+	protected abstract Card processNextMove(Field field);
 
 	public override void BeginTurn()
 	{
-		_ = InTurn();
+		_ = inTurn();
 	}
 
-	async void InTurn()
+	public override void EndTurn()
+	{
+
+	}
+
+	protected void calculate
+
+	protected async void inTurn()
 	{
 		for(int i = 0; i < 10; ++i)
 		{
-			Card nextCard = processNextMove();
+			Card nextCard = processNextMove(m_gameManager.GetField());
 
 			if(!nextCard)
 			{
@@ -21,16 +28,9 @@ public abstract class AIPlayer : Player
 			}
 
 			DoMove(nextCard);
-
-			await UniTask.Delay
 		}
 
 		m_gameManager.NextTurn();
-
-	}
-
-	public override void EndTurn()
-	{
 
 	}
 }

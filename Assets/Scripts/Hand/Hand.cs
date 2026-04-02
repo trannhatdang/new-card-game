@@ -12,6 +12,11 @@ public class Hand : MonoBehaviour
 		get { return m_cardList; }
 	}
 
+	public int GetNumCardsLeft()
+	{
+		return m_cardList.Count;
+	}
+
 	public bool ContainsCard(Card card)
 	{
 		return m_cardList.Contains(card);

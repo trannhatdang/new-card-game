@@ -29,6 +29,11 @@ public abstract class Player : MonoBehaviour
 		m_gameManager = gameManager;
 	}
 
+	public int GetNumCardsLeft()
+	{
+		return m_hand.GetNumCardsLeft();
+	}
+
 	public string Print()
 	{
 		return m_name;
