@@ -5,6 +5,8 @@ public class Field
 	public int PlayersLeft = 4;
 	public List<PlayerRole> RolesLeft;
 	public List<int> PlayersHands;
+	public List<int> PlayersHP;
+	public List<List<int>> SusMatrix;
 
 	public Field(int playersLeft, List<PlayerRole> rolesLeft, List<int> playersHands) : PlayersLeft(playersLeft), RolesLeft(rolesLeft), PlayersHands(playersHands)
 	{
