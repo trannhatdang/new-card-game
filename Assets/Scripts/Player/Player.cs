@@ -10,13 +10,16 @@ public abstract class Player : MonoBehaviour
 	public abstract void BeginTurn();
 	public abstract void EndTurn();
 
-	protected void DoMove(Card card)
+	protected async void DoMove(Card card, int targetPlayerIndex)
 	{
 		if(!card || !m_hand.ContainsCard(card))
 		{
 			return;
 		}
 
+		Player targetPlayer = m_gameManager.GetPlayer(targetPlayerIndex);
+
+		card.OnPlayed();
 	}
 
 	public void InjectGameManager(GameManager gameManager)

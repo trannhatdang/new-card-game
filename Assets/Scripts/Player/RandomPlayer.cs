@@ -2,9 +2,9 @@ using UnityEngine;
 
 public class RandomPlayer : AIPlayer
 {
-	protected override Card processNextMove(Field field)
+	protected override async void processNextMove(Field field, out int nextCard, out int targetPlayer)
 	{
-
-		return null;
+		nextCard = Random.Range(0, size);
+		targetPlayer = Random.Range(0, 4);
 	}
 }

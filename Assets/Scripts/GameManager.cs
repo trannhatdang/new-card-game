@@ -75,6 +75,11 @@ public class GameManager : MonoBehaviour
 		return new Field(m_playerList.Count, m_playerRoles, playerCardsNum);
 	}
 
+	public Player GetPlayer(int index)
+	{
+		return m_playerList[index];
+	}
+
 	// void OnGUI()
 	// {
 	// 	if (GUI.Button(new Rect(500, 500, 50, 100), "Start Player Picker"))

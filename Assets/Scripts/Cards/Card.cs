@@ -29,13 +29,13 @@ public class Card : MonoBehaviour
 		m_ui = ui;
 	}
 
-	public void OnPlayed()
+	public void OnPlayed(Player targetPlayer = null)
 	{
 		if(!m_gm || !m_ui)
 		{
 			return;
 		}
 
-		m_cardInfoSO.CardAction(m_player, m_gm, m_ui);
+		m_cardInfoSO.CardAction(m_player, m_gm, m_ui, targetPlayer);
 	}
 }

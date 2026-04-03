@@ -1,11 +1,12 @@
 using UnityEngine;
 public class Pew : CardAction
 {
-	public override async void Action(Player player, GameManager gm, UIManager ui)
+	public override async void Action(Player player, GameManager gm, UIManager ui, Player targetPlayer = null)
 	{
-		Player chosenPlayer = await gm.StartPlayerPicker();
-
-
+		if(!targetPlayer)
+		{
+			targetPlayer = await gm.StartPlayerPicker();
+		}
 
 
 	}

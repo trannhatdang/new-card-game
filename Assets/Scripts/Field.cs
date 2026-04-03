@@ -1,40 +1,59 @@
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class Field
 {
-	public int PlayersLeft = 4;
 	public List<PlayerRole> RolesLeft;
 	public List<int> PlayersHands;
+	public List<int> PlayersEquips;
 	public List<int> PlayersHP;
+	public List<string> PlayersCharacters;
 	public List<List<int>> SusMatrix;
 
-	public Field(int playersLeft, List<PlayerRole> rolesLeft, List<int> playersHands) : PlayersLeft(playersLeft), RolesLeft(rolesLeft), PlayersHands(playersHands)
+	public Field(List<PlayerRole> rolesLeft, List<int> playersHands, List<int> playersEquips, List<int> playersHP,
+			List<string> playersCharacters, List<List<int>> susMatrix)
 	{
-		if(!checkValid())
-		{
-			Debug.Log("Invalid Field Creation!")
-		}
+		this.RolesLeft = rolesLeft;
+		this.PlayersHands = playersHands;
+		this.PlayersEquips = playersEquips;
+		this.PlayersHP = playersHP;
+		this.PlayersCharacters = playersCharacters;
+		this.SusMatrix = susMatrix;
 	}
 
-	public Field(const Field& field)
+	public Field(Field field)
 	{
-		this.PlayersLeft = field.PlayersLeft;
 		this.RolesLeft = new List<PlayerRole>(field.RolesLeft);
 		this.PlayersHands = new List<int>(field.PlayersHands);
+		this.PlayersEquips = new List<int>(field.PlayersEquips);
+		this.PlayersHP = new List<int>(field.PlayersHP);
+		this.PlayersCharacters = new List<string>(field.PlayersCharacters);
+		this.SusMatrix = new List<List<int>>(susMatrix);
+	}
 
-		if(!checkValid())
+	public void SimulateMove(int targetPlayer, CardInfoSO card)
+	{
+
+	}
+
+	public List<int> CalculateValue()
+	{
+		List<int> PlayerVal = new List<int>();
+		List<int> ret = new List<int>(4);
+		for(int i = 0; i < 4; ++i)
 		{
-			Debug.Log("Invalid Field Creation!")
+			PlayerVal[i] = PlayersHands[i] + PlayersEquips[i] + PlayersHP[i];
 		}
-	}
 
-	public void SimulateMove(int player, CardInfoSO card)
-	{
+		for(int i = 0; i < 4; ++i)
+		{
+			ret[i] = PlayerVal[0] * SusMatrix[0][i]
+				+ PlayerVal[1] * SusMatrix[1][i]
+				+ PlayerVal[2] * SusMatrix[2][i]
+				+ PlayerVal[3] * SusMatrix[3][i];
+		}
 
-	}
-
-	bool checkValid()
-	{
-		return PlayersLeft != RolesLeft.Count || PlayersLeft != PlayersHands.Count;
+		return ret;
 	}
 }
