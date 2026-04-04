@@ -9,15 +9,16 @@ public class UIRightClickMenu : MonoBehaviour
 	[SerializeField] Button m_playButton;
 	[SerializeField] InputAction m_mouse;
 
-	void Start()
+	void Awake()
 	{
 		m_mouse = InputSystem.actions.FindAction("Point");
-		m_mouse.ReadValue<Vector2>();
+		Close();
 	}
 
 	public void Open(UICard card)
 	{
 		Vector3 mousePos = (Vector3)(m_mouse.ReadValue<Vector2>());
+
 		transform.position = mousePos;
 
 		gameObject.SetActive(true);
