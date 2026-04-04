@@ -8,11 +8,11 @@ public class Field
 	public List<int> PlayersHands;
 	public List<int> PlayersEquips;
 	public List<int> PlayersHP;
-	public List<string> PlayersCharacters;
+	public List<CharacterCard> PlayersCharacters;
 	public List<List<int>> SusMatrix;
 
 	public Field(List<PlayerRole> rolesLeft, List<int> playersHands, List<int> playersEquips, List<int> playersHP,
-			List<string> playersCharacters, List<List<int>> susMatrix)
+			List<CharacterCard> playersCharacters, List<List<int>> susMatrix)
 	{
 		this.RolesLeft = rolesLeft;
 		this.PlayersHands = playersHands;
@@ -28,8 +28,8 @@ public class Field
 		this.PlayersHands = new List<int>(field.PlayersHands);
 		this.PlayersEquips = new List<int>(field.PlayersEquips);
 		this.PlayersHP = new List<int>(field.PlayersHP);
-		this.PlayersCharacters = new List<string>(field.PlayersCharacters);
-		this.SusMatrix = new List<List<int>>(susMatrix);
+		this.PlayersCharacters = new List<CharacterCard>(field.PlayersCharacters);
+		this.SusMatrix = new List<List<int>>(field.SusMatrix);
 	}
 
 	public void SimulateMove(int targetPlayer, CardInfoSO card)

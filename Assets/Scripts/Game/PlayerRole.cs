@@ -1,4 +1,4 @@
-enum PlayerRole {
+public enum PlayerRole {
 	Sheriff,
 	ViceSheriff,
 	Criminal,

@@ -14,6 +14,8 @@ public class GameManager : MonoBehaviour
 	[SerializeField] List<PlayerRole> m_playerRoles;
 	[SerializeField] int m_currPlayer;
 
+	[SerializeField] List<List<int>> m_susMatrix;
+
 	Player m_playerPicked;
 	Card m_cardPicked;
 
@@ -66,13 +68,19 @@ public class GameManager : MonoBehaviour
 	public Field GetField()
 	{
 		List<int> playerCardsNum = new List<int>();
+		List<int> playerEquippedCardsNum = new List<int>();
+		List<int> playerHP = new List<int>();
+		List<CharacterCard> playerCharacters = new List<CharacterCard>();
+		// List<int> playerHP = new List<int>();
+		// List<int> playerEquippedCardsNum = new List<int>();
 
 		for(int i = 0; i < m_playerList.Count; ++i)
 		{
 			playerCardsNum.Add(m_playerList[i].GetNumCardsLeft());
 		}
 
-		return new Field(m_playerList.Count, m_playerRoles, playerCardsNum);
+		return new Field(m_playerRoles, playerCardsNum, playerEquippedCardsNum,
+				playerHP, playerCharacters, m_susMatrix);
 	}
 
 	public Player GetPlayer(int index)

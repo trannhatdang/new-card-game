@@ -3,9 +3,8 @@ using UnityEngine;
 public class Card : MonoBehaviour
 {
 	// Start is called once before the first execution of Update after the MonoBehaviour is created
-	[SerializeField] Player m_player;
-	[SerializeField] GameManager m_gm;
-	[SerializeField] UIManager m_ui;
+	[SerializeField] Hand m_hand;
+	[SerializeField] GameManager m_gameManager;
 	[SerializeField] CardInfoSO m_cardInfoSO;
 
 	public CardInfoSO CardInfo {
@@ -23,19 +22,13 @@ public class Card : MonoBehaviour
 
 	}
 
-	public void InjectManagers(GameManager gm, UIManager ui)
+	public void InjectManagers(GameManager gm)
 	{
-		m_gm = gm;
-		m_ui = ui;
+		m_gameManager = gm;
 	}
 
-	public void OnPlayed(Player targetPlayer = null)
+	public void OnPlay(Player targetPlayer = null)
 	{
-		if(!m_gm || !m_ui)
-		{
-			return;
-		}
-
-		m_cardInfoSO.CardAction(m_player, m_gm, m_ui, targetPlayer);
+		m_hand.PlayCard(this, targetPlayer);
 	}
 }

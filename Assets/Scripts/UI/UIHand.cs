@@ -5,10 +5,14 @@ using DG.Tweening;
 
 public class UIHand : MonoBehaviour
 {
+	[SerializeField] UIManager m_UIManager;
 	[SerializeField] int m_defaultWidth;
+	[SerializeField] int m_defaultHeight;
 	[SerializeField] int m_highlightWidth;
+	[SerializeField] int m_highlightHeight;
 	[SerializeField] int m_highlightY;
 	[SerializeField] List<RectTransform> m_tfsList;
+
 	void Start()
 	{
 		UpdateChildrenTFS();
@@ -52,15 +56,53 @@ public class UIHand : MonoBehaviour
 
 	public void Highlight(int index)
 	{
-		m_tfsList[index].DOSizeDelta(new Vector2(m_highlightWidth, m_tfsList[index].sizeDelta.y), 0.5f, false);
-		m_tfsList[index].DOAnchorPos(new Vector2(m_tfsList[index].anchoredPosition.x, m_tfsList[index].anchoredPosition.y), 0.5f, false);
+		// if(index < 0 || index >= m_tfsList.Count)
+		// {
+		// 	return;
+		// }
+		//
+		// if(index > 0)
+		// {
+		// 	m_tfsList[index - 1].DOSizeDelta(new Vector2(m_highlightWidth, m_highlightHeight), 0.5f, false);
+		// }
+		//
+		// m_tfsList[index].DOSizeDelta(new Vector2(m_highlightWidth, m_highlightHeight), 0.5f, false);
+		float lastX = 0;
+		for(int i = 0; i < index; ++i)
+		{
+			lastX += m_defaultWidth * i;
+			m_tfsList[i].DOAnchorPos(new Vector2(lastX, 0), 0.5f, false);
+		}
+		
+		lastX += (m_highlightWidth / 2);
+		m_tfsList[index].DOAnchorPos(new Vector2(lastX, m_highlightY), 0.5f, false);
+		lastX += (m_highlightWidth / 2);
+
+		for(int i = index + 1; i < m_tfsList.Count; ++i)
+		{
+			lastX += m_defaultWidth * i;
+			m_tfsList[i].DOAnchorPos(new Vector2(lastX, 0), 0.5f, false);
+		}
+		// position();
+	}
+
+	public void Highlight(RectTransform tfs)
+	{
+		for(int i = 0; i < m_tfsList.Count; ++i)
+		{
+			if(m_tfsList[i] == tfs)
+			{
+				Highlight(i);
+				return;
+			}
+		}
 	}
 
 	public void Reset()
 	{
 		for(int i = 0; i < m_tfsList.Count; ++i)
 		{
-			m_tfsList[i].DOSizeDelta(new Vector2(m_defaultWidth, m_tfsList[i].sizeDelta.y), 0.5f, false);
+			// m_tfsList[i].DOSizeDelta(new Vector2(m_defaultWidth, m_tfsList[i].sizeDelta.y), 0.5f, false);
 			m_tfsList[i].DOAnchorPos(new Vector2(m_defaultWidth * i, 0), 0.5f, false);
 		}
 	}
@@ -76,5 +118,20 @@ public class UIHand : MonoBehaviour
 
 			m_tfsList.Add(all_tfs[i]);
 		}
+	}
+
+	public void RemoveCard(RectTransform tfs)
+	{
+		if(!m_tfsList.Contains(tfs)) 
+		{
+			return;
+		}
+
+		m_tfsList.Remove(tfs);
+	}
+
+	public void OpenRightClickMenu(UICard card)
+	{
+		m_UIManager.OpenRightClickMenu(card);
 	}
 }

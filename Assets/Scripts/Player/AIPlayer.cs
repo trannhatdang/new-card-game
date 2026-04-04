@@ -1,12 +1,14 @@
+using System.Collections.Generic;
 using UnityEngine;
+using Cysharp.Threading.Tasks;
 
 public abstract class AIPlayer : Player
 {
-	protected abstract void processNextMove(Field field, out int nextCard, out int targetPlayer);
+	protected abstract UniTask<Move> processNextMove(Field field);
 
 	public override void BeginTurn()
 	{
-		_ = inTurn();
+		inTurn();
 	}
 
 	public override void EndTurn()
@@ -26,17 +28,17 @@ public abstract class AIPlayer : Player
 			List<Card> cards = getMoves();
 			int size = cards.Count;
 
-			int nextCard = null;
+			int nextCard = -1;
 			int targetPlayer = -1;
 
-			processNextMove(m_gameManager.GetField(), out nextCard, out targetPlayer);
+			Move move = await processNextMove(m_gameManager.GetField());
 
-			if(nextCard < 0 || nextCard > size)
+			if(move.nextCard < 0 || move.nextCard > size)
 			{
 				break;
 			}
 
-			await DoMove(cards[nextCard], targetPlayer);
+			await DoMove(move);
 		}
 
 		m_gameManager.NextTurn();

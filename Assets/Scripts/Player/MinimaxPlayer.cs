@@ -1,10 +1,11 @@
 using UnityEngine;
+using Cysharp.Threading.Tasks;
 
 public class MinimaxPlayer : AIPlayer
 {
-	protected override async void processNextMove(Field field, out int nextCard, out int targetPlayer)
+	protected override async UniTask<Move> processNextMove(Field field)
 	{
 
-		return null;
+		return new Move(-1, -1);
 	}
 }

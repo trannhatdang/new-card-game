@@ -1,10 +1,14 @@
 using UnityEngine;
+using Cysharp.Threading.Tasks;
 
 public class RandomPlayer : AIPlayer
 {
-	protected override async void processNextMove(Field field, out int nextCard, out int targetPlayer)
+	protected override async UniTask<Move> processNextMove(Field field)
 	{
-		nextCard = Random.Range(0, size);
-		targetPlayer = Random.Range(0, 4);
+		int size = m_hand.GetNumCardsLeft();
+		int nextCard = Random.Range(0, size);
+		int targetPlayer = Random.Range(0, 4);
+
+		return new Move(nextCard, targetPlayer);
 	}
 }

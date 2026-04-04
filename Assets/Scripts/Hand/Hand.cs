@@ -5,11 +5,17 @@ using UnityEngine;
 public class Hand : MonoBehaviour
 {
 	// Start is called once before the first execution of Update after the MonoBehaviour is created
+	[SerializeField] Player m_player;
 	[SerializeField] List<Card> m_cardList;
+	[SerializeField] List<Card> m_equippedCardList;
 	[SerializeField] UIHand m_UIHand;
 
 	public List<Card> CardList {
 		get { return m_cardList; }
+	}
+
+	public List<Card> EquippedCardList {
+		get { return m_equippedCardList; }
 	}
 
 	public int GetNumCardsLeft()
@@ -20,5 +26,17 @@ public class Hand : MonoBehaviour
 	public bool ContainsCard(Card card)
 	{
 		return m_cardList.Contains(card);
+	}
+
+	public int GetEquippedNumCards()
+	{
+		return m_equippedCardList.Count;
+	}
+
+	public void PlayCard(Card card, Player targetPlayer)
+	{
+		m_player.PlayCard(card, targetPlayer);
+
+		m_cardList.Remove(card);
 	}
 }
