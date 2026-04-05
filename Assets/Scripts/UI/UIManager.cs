@@ -6,6 +6,8 @@ using Cysharp.Threading.Tasks;
 public class UIManager : MonoBehaviour
 {
 	[SerializeField] GameManager m_gameManager;
+	[SerializeField] FXManager m_FXManager;
+
 	[SerializeField] UIRightClickMenu m_rightClickMenu;
 	[SerializeField] UIPlayerPicker m_playerPicker;
 	[SerializeField] List<UIHand> m_handList;
@@ -33,5 +35,15 @@ public class UIManager : MonoBehaviour
 	public void OpenRightClickMenu(UICard card)
 	{
 		m_rightClickMenu.Open(card);
+	}
+
+	public void Pew(Player shooter, Player target)
+	{
+		m_FXManager.Pew(shooter, target);
+	}
+
+	public void Dodge(Player shooter, Player target)
+	{
+		m_FXManager.Dodge(shooter, target);
 	}
 }

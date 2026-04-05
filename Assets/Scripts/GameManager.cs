@@ -45,7 +45,9 @@ public class GameManager : MonoBehaviour
 
 		m_UIManager.EndPlayerPicker();
 		m_state = GameState.Playing;
-		return m_playerPicked;
+		Player ret = m_playerPicked;
+		m_playerPicked = null;
+		return ret;
 	}
 
 	public async UniTask<Card> StartCardPicker()
@@ -131,6 +133,30 @@ public class GameManager : MonoBehaviour
 	public async void Pew(Player shooter, Player target, int requiredDodges = 1)
 	{
 		bool success = await target.Shot(shooter, requiredDodges);
+
+		if (success)
+		{
+			m_UIManager.Pew(shooter, target);
+		}
+		else
+		{
+			m_UIManager.Dodge(shooter, target);
+		}
+	}
+
+	public async void Draw(Player drawer, DeckInfoSO source)
+	{
+
+	}
+
+	public async void Draw(Player drawer, Player source)
+	{
+
+	}
+
+	public async void Equip(Player equipper)
+	{
+
 	}
 
 	// void OnGUI()
