@@ -485,7 +485,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Card
   m_hand: {fileID: 1812369218}
-  m_cardInfoSO: {fileID: 11400000, guid: 84521b481539ef846be818b6755a2b55, type: 2}
+  m_cardInfoSO: {fileID: 11400000, guid: ade2bafa43a47dd43bfe676e8e629709, type: 2}
 --- !u!114 &418008079
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -831,7 +831,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Card
   m_hand: {fileID: 1812369218}
-  m_cardInfoSO: {fileID: 11400000, guid: 84521b481539ef846be818b6755a2b55, type: 2}
+  m_cardInfoSO: {fileID: 11400000, guid: ade2bafa43a47dd43bfe676e8e629709, type: 2}
 --- !u!114 &531458177
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2097,7 +2097,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Card
   m_hand: {fileID: 1812369218}
-  m_cardInfoSO: {fileID: 11400000, guid: 84521b481539ef846be818b6755a2b55, type: 2}
+  m_cardInfoSO: {fileID: 11400000, guid: ade2bafa43a47dd43bfe676e8e629709, type: 2}
 --- !u!1 &1237509213
 GameObject:
   m_ObjectHideFlags: 0

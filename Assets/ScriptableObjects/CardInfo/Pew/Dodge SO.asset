@@ -9,6 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a055be575f10d2e48b4df72ad9ec0871, type: 3}
-  m_Name: PewAction
-  m_EditorClassIdentifier: Assembly-CSharp::Pew
+  m_Script: {fileID: 11500000, guid: f018917ff31f43741ac54590bbc2c26c, type: 3}
+  m_Name: Dodge SO
+  m_EditorClassIdentifier: Assembly-CSharp::DodgeSO
+  m_name: 
+  m_descript: 
+  m_sprite: {fileID: 0}
+  m_action: {fileID: 0}
