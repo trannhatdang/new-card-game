@@ -22,7 +22,7 @@ public class UIHand : MonoBehaviour
 	// Update is called once per frame
 	void Update()
 	{
-		for(int i = 0; i < m_tfsList.Count; ++i)
+		for (int i = 0; i < m_tfsList.Count; ++i)
 		{
 			// Debug.Log(m_tfsList[i].sizeDelta);
 		}
@@ -30,7 +30,7 @@ public class UIHand : MonoBehaviour
 
 	void position()
 	{
-		for(int i = 0; i < m_tfsList.Count; ++i)
+		for (int i = 0; i < m_tfsList.Count; ++i)
 		{
 			var width = m_tfsList[i].sizeDelta[0];
 			var height = m_tfsList[i].sizeDelta[1];
@@ -68,17 +68,17 @@ public class UIHand : MonoBehaviour
 		//
 		// m_tfsList[index].DOSizeDelta(new Vector2(m_highlightWidth, m_highlightHeight), 0.5f, false);
 		float lastX = 0;
-		for(int i = 0; i < index; ++i)
+		for (int i = 0; i < index; ++i)
 		{
 			lastX += m_defaultWidth * i;
 			m_tfsList[i].DOAnchorPos(new Vector2(lastX, 0), 0.5f, false);
 		}
-		
+
 		lastX += (m_highlightWidth / 2);
 		m_tfsList[index].DOAnchorPos(new Vector2(lastX, m_highlightY), 0.5f, false);
 		lastX += (m_highlightWidth / 2);
 
-		for(int i = index + 1; i < m_tfsList.Count; ++i)
+		for (int i = index + 1; i < m_tfsList.Count; ++i)
 		{
 			lastX += m_defaultWidth * i;
 			m_tfsList[i].DOAnchorPos(new Vector2(lastX, 0), 0.5f, false);
@@ -88,9 +88,9 @@ public class UIHand : MonoBehaviour
 
 	public void Highlight(RectTransform tfs)
 	{
-		for(int i = 0; i < m_tfsList.Count; ++i)
+		for (int i = 0; i < m_tfsList.Count; ++i)
 		{
-			if(m_tfsList[i] == tfs)
+			if (m_tfsList[i] == tfs)
 			{
 				Highlight(i);
 				return;
@@ -100,7 +100,7 @@ public class UIHand : MonoBehaviour
 
 	public void Reset()
 	{
-		for(int i = 0; i < m_tfsList.Count; ++i)
+		for (int i = 0; i < m_tfsList.Count; ++i)
 		{
 			// m_tfsList[i].DOSizeDelta(new Vector2(m_defaultWidth, m_tfsList[i].sizeDelta.y), 0.5f, false);
 			m_tfsList[i].DOAnchorPos(new Vector2(m_defaultWidth * i, 0), 0.5f, false);
@@ -112,9 +112,9 @@ public class UIHand : MonoBehaviour
 		m_tfsList = new List<RectTransform>();
 		var all_tfs = GetComponentsInChildren<RectTransform>().ToList();
 
-		for(int i = 0; i < all_tfs.Count; ++i)
+		for (int i = 0; i < all_tfs.Count; ++i)
 		{
-			if(all_tfs[i].parent != transform) continue;
+			if (all_tfs[i].parent != transform) continue;
 
 			m_tfsList.Add(all_tfs[i]);
 		}
@@ -122,7 +122,7 @@ public class UIHand : MonoBehaviour
 
 	public void RemoveCard(RectTransform tfs)
 	{
-		if(!m_tfsList.Contains(tfs)) 
+		if (!m_tfsList.Contains(tfs))
 		{
 			return;
 		}

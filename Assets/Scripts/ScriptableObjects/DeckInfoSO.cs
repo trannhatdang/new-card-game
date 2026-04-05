@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class DeckInfoSO : ScriptableObject
 {
 	// Start is called once before the first execution of Update after the MonoBehaviour is created
-	[SerializeField] List<CardInfoSO> m_cardInfos;
+	[SerializeField] List<Card> m_cardList;
 	
 	public void Shuffle()
 	{

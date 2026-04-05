@@ -10,11 +10,13 @@ public class Hand : MonoBehaviour
 	[SerializeField] List<Card> m_equippedCardList;
 	[SerializeField] UIHand m_UIHand;
 
-	public List<Card> CardList {
+	public List<Card> CardList
+	{
 		get { return m_cardList; }
 	}
 
-	public List<Card> EquippedCardList {
+	public List<Card> EquippedCardList
+	{
 		get { return m_equippedCardList; }
 	}
 
@@ -28,15 +30,21 @@ public class Hand : MonoBehaviour
 		return m_cardList.Contains(card);
 	}
 
-	public int GetEquippedNumCards()
+	public int GetNumEquippedCards()
 	{
 		return m_equippedCardList.Count;
 	}
 
-	public void PlayCard(Card card, Player targetPlayer)
+	public void PlayCard(Card card, Player targetPlayer = null)
 	{
 		m_player.PlayCard(card, targetPlayer);
 
 		m_cardList.Remove(card);
+	}
+
+	public void RemoveCard(Card card)
+	{
+		m_cardList.Remove(card);
+		m_UIHand.RemoveCard(card.transform.parent.transform as RectTransform);
 	}
 }

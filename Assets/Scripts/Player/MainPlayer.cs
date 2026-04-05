@@ -1,4 +1,5 @@
 using UnityEngine;
+using Cysharp.Threading.Tasks;
 
 public class MainPlayer : Player
 {
@@ -13,5 +14,15 @@ public class MainPlayer : Player
 	{
 		//disable UI
 		
+	}
+
+	public override async UniTask<Player> StartPlayerPicker()
+	{
+		return await m_gameManager.StartPlayerPicker();
+	}
+
+	public override async UniTask<Card> StartCardPicker()
+	{
+		return await m_gameManager.StartCardPicker();
 	}
 }

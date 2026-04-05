@@ -19,6 +19,11 @@ public class UICard : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, 
 		m_UIHand.Highlight(transform.parent.transform as RectTransform);
 	}
 
+	public void SetRightClickOptions(UIRightClickMenu menu)
+	{
+		m_card.SetRightClickOptions(menu);
+	}
+
 	public void OnPointerEnter(PointerEventData pointer)
 	{
 		OnHover();
@@ -31,7 +36,7 @@ public class UICard : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, 
 
 	public void OnPointerClick(PointerEventData pointer)
 	{
-		if(pointer.button == PointerEventData.InputButton.Right)
+		if (pointer.button == PointerEventData.InputButton.Right)
 		{
 			m_UIHand.OpenRightClickMenu(this);
 		}

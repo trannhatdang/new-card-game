@@ -4,10 +4,10 @@ public class Card : MonoBehaviour
 {
 	// Start is called once before the first execution of Update after the MonoBehaviour is created
 	[SerializeField] Hand m_hand;
-	[SerializeField] GameManager m_gameManager;
 	[SerializeField] CardInfoSO m_cardInfoSO;
 
-	public CardInfoSO CardInfo {
+	public CardInfoSO CardInfo
+	{
 		get { return m_cardInfoSO; }
 	}
 
@@ -22,13 +22,28 @@ public class Card : MonoBehaviour
 
 	}
 
-	public void InjectManagers(GameManager gm)
+	public void SetRightClickOptions(UIRightClickMenu menu)
 	{
-		m_gameManager = gm;
+		m_cardInfoSO.SetRightClickOptions(menu);
 	}
 
 	public void OnPlay(Player targetPlayer = null)
 	{
 		m_hand.PlayCard(this, targetPlayer);
+	}
+
+	public bool OnDodge(Player shooter = null)
+	{
+		if (m_cardInfoSO.OnDodge())
+		{
+			return this;
+		}
+
+		return true;
+	}
+
+	public void RemoveFromHand()
+	{
+		m_hand.RemoveCard(this);
 	}
 }

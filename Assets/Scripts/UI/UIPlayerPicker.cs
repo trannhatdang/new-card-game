@@ -4,15 +4,8 @@ using UnityEngine;
 
 public class UIPlayerPicker : MonoBehaviour
 {
-	[SerializeField] List<UIHand> m_handList;
-	void Start()
+	public void SetActive(bool val)
 	{
-
-	}
-
-	// Update is called once per frame
-	void Update()
-	{
-
+		gameObject.SetActive(val);
 	}
 }

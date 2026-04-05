@@ -7,7 +7,18 @@ public class UIManager : MonoBehaviour
 {
 	[SerializeField] GameManager m_gameManager;
 	[SerializeField] UIRightClickMenu m_rightClickMenu;
+	[SerializeField] UIPlayerPicker m_playerPicker;
 	[SerializeField] List<UIHand> m_handList;
+
+	public void StartPlayerPicker()
+	{
+		m_playerPicker.SetActive(true);
+	}
+
+	public void EndPlayerPicker()
+	{
+		m_playerPicker.SetActive(false);
+	}
 
 	public void PickPlayer(Player player)
 	{

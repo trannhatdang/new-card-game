@@ -375,6 +375,7 @@ GameObject:
   m_Component:
   - component: {fileID: 397464405}
   - component: {fileID: 397464407}
+  - component: {fileID: 397464408}
   m_Layer: 0
   m_Name: Player 3
   m_TagString: Untagged
@@ -409,10 +410,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb4236ceb4a0b804e8af2cf763389988, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Hand
-  m_player: {fileID: 0}
+  m_player: {fileID: 397464408}
   m_cardList: []
   m_equippedCardList: []
   m_UIHand: {fileID: 1100739730}
+--- !u!114 &397464408
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 397464404}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec992620aa825114792af0f7e9ac0cd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RandomPlayer
+  m_gameManager: {fileID: 1237509215}
+  m_UIManager: {fileID: 1938967706}
+  m_character: {fileID: 11400000, guid: ddf77d8dcf813b9469b7676c36bde6d0, type: 2}
+  m_role: 0
+  m_hand: {fileID: 397464407}
+  m_name: Player 3
+  m_hp: 4
 --- !u!1 &418008076
 GameObject:
   m_ObjectHideFlags: 0
@@ -465,7 +485,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Card
   m_hand: {fileID: 1812369218}
-  m_gameManager: {fileID: 1237509215}
   m_cardInfoSO: {fileID: 11400000, guid: 84521b481539ef846be818b6755a2b55, type: 2}
 --- !u!114 &418008079
 MonoBehaviour:
@@ -529,6 +548,7 @@ GameObject:
   m_Component:
   - component: {fileID: 513989791}
   - component: {fileID: 513989793}
+  - component: {fileID: 513989794}
   m_Layer: 0
   m_Name: Player 2
   m_TagString: Untagged
@@ -563,10 +583,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb4236ceb4a0b804e8af2cf763389988, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Hand
-  m_player: {fileID: 0}
+  m_player: {fileID: 513989794}
   m_cardList: []
   m_equippedCardList: []
   m_UIHand: {fileID: 911059136}
+--- !u!114 &513989794
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 513989790}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec992620aa825114792af0f7e9ac0cd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RandomPlayer
+  m_gameManager: {fileID: 1237509215}
+  m_UIManager: {fileID: 1938967706}
+  m_character: {fileID: 11400000, guid: ddf77d8dcf813b9469b7676c36bde6d0, type: 2}
+  m_role: 0
+  m_hand: {fileID: 513989793}
+  m_name: Player 2
+  m_hp: 4
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -792,7 +831,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Card
   m_hand: {fileID: 1812369218}
-  m_gameManager: {fileID: 1237509215}
   m_cardInfoSO: {fileID: 11400000, guid: 84521b481539ef846be818b6755a2b55, type: 2}
 --- !u!114 &531458177
 MonoBehaviour:
@@ -1178,6 +1216,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 790320413}
+  - component: {fileID: 790320414}
   m_Layer: 5
   m_Name: Pickers
   m_TagString: Untagged
@@ -1205,6 +1244,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &790320414
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 790320412}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a928c4d97e241f41b6eaf0729cddb64, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UIPlayerPicker
 --- !u!1 &895984907
 GameObject:
   m_ObjectHideFlags: 0
@@ -1292,7 +1343,7 @@ MonoBehaviour:
         m_MethodName: PickPlayer
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgument: {fileID: 1941414141}
           m_ObjectArgumentAssemblyTypeName: Player, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -1567,7 +1618,7 @@ MonoBehaviour:
         m_MethodName: PickPlayer
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgument: {fileID: 513989794}
           m_ObjectArgumentAssemblyTypeName: Player, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -1897,7 +1948,7 @@ MonoBehaviour:
         m_MethodName: PickPlayer
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgument: {fileID: 397464408}
           m_ObjectArgumentAssemblyTypeName: Player, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -2046,7 +2097,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Card
   m_hand: {fileID: 1812369218}
-  m_gameManager: {fileID: 1237509215}
   m_cardInfoSO: {fileID: 11400000, guid: 84521b481539ef846be818b6755a2b55, type: 2}
 --- !u!1 &1237509213
 GameObject:
@@ -2093,9 +2143,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
   m_state: 0
-  m_UI: {fileID: 1938967706}
+  m_UIManager: {fileID: 1938967706}
   m_deckInfoSO: {fileID: 0}
-  m_playerList: []
+  m_playerList:
+  - {fileID: 1812369219}
+  - {fileID: 513989794}
+  - {fileID: 397464408}
+  - {fileID: 1941414141}
   m_playerRoles: 
   m_currPlayer: 0
 --- !u!1 &1393212718
@@ -2364,7 +2418,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Hand
   m_player: {fileID: 1812369219}
-  m_cardList: []
+  m_cardList:
+  - {fileID: 1197899887}
+  - {fileID: 418008078}
+  - {fileID: 531458176}
   m_equippedCardList: []
   m_UIHand: {fileID: 107039817}
 --- !u!114 &1812369219
@@ -2381,10 +2438,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::MainPlayer
   m_gameManager: {fileID: 1237509215}
   m_UIManager: {fileID: 1938967706}
-  m_characterCard: {fileID: 11400000, guid: ddf77d8dcf813b9469b7676c36bde6d0, type: 2}
+  m_character: {fileID: 11400000, guid: ddf77d8dcf813b9469b7676c36bde6d0, type: 2}
   m_role: 0
   m_hand: {fileID: 1812369218}
-  m_name: 
+  m_name: Player 1
+  m_hp: 4
 --- !u!1 &1888075098
 GameObject:
   m_ObjectHideFlags: 0
@@ -2678,6 +2736,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::UIManager
   m_gameManager: {fileID: 1237509215}
   m_rightClickMenu: {fileID: 561035186}
+  m_playerPicker: {fileID: 790320414}
   m_handList:
   - {fileID: 107039817}
 --- !u!1 &1941414137
@@ -2690,6 +2749,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1941414138}
   - component: {fileID: 1941414140}
+  - component: {fileID: 1941414141}
   m_Layer: 0
   m_Name: Player 4
   m_TagString: Untagged
@@ -2724,10 +2784,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb4236ceb4a0b804e8af2cf763389988, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Hand
-  m_player: {fileID: 0}
+  m_player: {fileID: 1941414141}
   m_cardList: []
   m_equippedCardList: []
   m_UIHand: {fileID: 900018974}
+--- !u!114 &1941414141
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1941414137}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec992620aa825114792af0f7e9ac0cd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RandomPlayer
+  m_gameManager: {fileID: 1237509215}
+  m_UIManager: {fileID: 1938967706}
+  m_character: {fileID: 11400000, guid: ddf77d8dcf813b9469b7676c36bde6d0, type: 2}
+  m_role: 0
+  m_hand: {fileID: 1941414140}
+  m_name: Player 4
+  m_hp: 4
 --- !u!1 &1959855076
 GameObject:
   m_ObjectHideFlags: 0
